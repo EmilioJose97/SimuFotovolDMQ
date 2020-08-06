@@ -8,7 +8,7 @@ import { Data } from '../Model/registro';
 export class RadService {
  
   API_URI;
-  API_URI2 = 'http://localhost:3000/registro';
+  API_URI2 = 'https://server-simulador-fotovoltaico.herokuapp.com/registro';
   Manual = "assets/img/Manual.pdf";
 
   constructor(private http: HttpClient) { }
@@ -20,7 +20,7 @@ export class RadService {
 
   recibirDatos(tabla) {
     //hacer lo que sea con los datos recibidos del componente
-    this.API_URI = 'http://localhost:3000/tmy'+ tabla;
+    this.API_URI = 'https://server-simulador-fotovoltaico.herokuapp.com/tmy'+ tabla;
   };
   
   getRegistro() {
