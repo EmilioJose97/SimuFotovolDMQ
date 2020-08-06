@@ -73,26 +73,7 @@ export class MapaComponent implements AfterViewInit {
       map: this.map,
       icon: 'assets/img/Map-Marker-Ball-Azure-32.png',
     });
-    // this.markers.push(marker);
-    // console.log(this.markers);
-
-
-    // Barra de informacion
-
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: 'Marker Location:' + marker.getPosition()
-    // });
-
-    // infowindow.open(this.map, marker);
-
-
-    //Polilinea
-
-    // //Static array
-    // this.route = [   
-    //   new google.maps.LatLng(-0.22622815010346095,-78.51022309527588),  
-    //   new google.maps.LatLng(-0.22562733995507267, -78.49919385180664) ]; 
-
+    
     // Automatic Array
     this.route1[this.contador-1] = $event.latLng;
     
@@ -104,12 +85,7 @@ export class MapaComponent implements AfterViewInit {
       strokeOpacity: 0.6
       });
 
-      //Distance
-    //   var P1= new google.maps.LatLng(-0.22622815010346095,-78.51022309527588)
-    //   var P2=new google.maps.LatLng(-0.22562733995507267, -78.49919385180664)
-
-    // this.Distance = google.maps.geometry.spherical.computeDistanceBetween(P1,P2);
-
+      
       //Area
 
       this.Area = google.maps.geometry.spherical.computeArea(this.route1);
@@ -164,21 +140,7 @@ export class MapaComponent implements AfterViewInit {
    }
    
  
-  //  borrar(){
-  //    this.route1.splice(this.contador-1,1);
-  //    this.contador=this.contador-1;
-  //    console.log(this.route1);
-     
-     
-
-  //   var Polilinea = new google.maps.Polyline({
-  //     path: this.route1,
-  //     map:this.map,
-  //     strokeColor: "#ff0000",   
-  //     strokeWeight: 5,   
-  //     strokeOpacity: 0.6
-  //     });
-  //  }
+  
 
   // Cambiar pagina a cc
 
