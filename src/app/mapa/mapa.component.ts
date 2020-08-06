@@ -12,8 +12,8 @@ export class MapaComponent implements AfterViewInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
 
-  lat = -0.225799;
-  lng = -78.505202;
+  lat = -0.1905014;
+  lng = -78.4859012;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
   mapOptions: google.maps.MapOptions = {
@@ -56,13 +56,13 @@ export class MapaComponent implements AfterViewInit {
   // markers = new Array();
   
    getLatLng($event){
-    console.log($event);
+    // console.log($event);
     // console.log($event.latLng.lng());
     var markerl= $event.latLng;
     this.contador=this.contador+1;
     this.latf=$event.latLng.lat();
     this.lngf=$event.latLng.lng();
-    console.log($event);
+    // console.log($event);
     
     
     
@@ -113,7 +113,7 @@ export class MapaComponent implements AfterViewInit {
       //Area
 
       this.Area = google.maps.geometry.spherical.computeArea(this.route1);
-      console.log(this.route1);
+      // console.log(this.route1);
 
       
       

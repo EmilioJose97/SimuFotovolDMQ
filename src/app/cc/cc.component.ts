@@ -431,7 +431,7 @@ if(this.Calefon==="Ninguna"){
     Sumatoriah[i]=(MFcocinaC[i]+MMicroondasC[i]+MPlancharopaC[i]+MPlanchapeloC[i]+MFcomedorC[i]+MFsalaC[i]+SLicuadora[i]+SSandwichera[i]+SLavadora[i]+SSecadoraropa[i]+STelevision[i]+SCocinaelec[i]+SComputadora[i]+SCalefonelec[i]+SFcuartolavado[i]+SFbaños[i]+SDuchaelec[i]+SRadio[i])*EnergiaPara;
   }
   
-  console.log(Sumatoriah);
+  // console.log(Sumatoriah);
   
 //Sumatoria Total
 
@@ -442,7 +442,7 @@ if(this.Calefon==="Ninguna"){
     Sumatoriat=sumf;
   }
   sumf=0;
-  console.log(Sumatoriat);
+  // console.log(Sumatoriat);
 // Calculo Fraccion
 
   var Fraccion=[];

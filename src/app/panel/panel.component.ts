@@ -176,7 +176,7 @@ export class PanelComponent implements OnInit{
     var Hs = GHI.map(function(x,index){ 
       return x*R[index]/1000;
     }); 
-    console.log(Rb)
+    // console.log(Rb)
     
     //CALCULO DE POTENCIA 
     var HsAnual = 0;
@@ -315,7 +315,7 @@ export class PanelComponent implements OnInit{
 
     this.VectorM = [GenEne.toFixed(),GenFeb.toFixed(),GenMar.toFixed(),GenAbr,GenMay.toFixed(),GenJun.toFixed(),GenJul.toFixed(),GenAgo.toFixed(),GenSep.toFixed(),GenOct.toFixed(),GenNov.toFixed(),GenDic.toFixed()];
 
-    console.log(this.VectorM)
+    // console.log(this.VectorM)
 
     //Indicadores tecnicos y economicos
     const inv = Potencia * this.Costo;
@@ -369,11 +369,11 @@ export class PanelComponent implements OnInit{
       saldo[x+1]=saldo[x]+pagoprin[x];
     }
 
-    console.log(calc2);
-    console.log(pagoint);
-    console.log(pagoprin);
-    console.log(cuota);
-    console.log(saldo);
+    // console.log(calc2);
+    // console.log(pagoint);
+    // console.log(pagoprin);
+    // console.log(cuota);
+    // console.log(saldo);
 
     var FF=[];
 
@@ -382,13 +382,13 @@ export class PanelComponent implements OnInit{
     }
 
     
-    console.log(cuota);
+    // console.log(cuota);
     FF[0]=-inversion+credito;
     for(var x=1;x<21;x++){
       FF[x]=AhorroAnual+cuota[x-1];
     }
 
-    console.log(FF);
+    // console.log(FF);
 
     //Valuar actual neto
     var tasadesc=0.13;
@@ -397,7 +397,7 @@ export class PanelComponent implements OnInit{
     for(var x=1;x<21;x++){
       VAN[x]=FF[x]/(Math.pow(tasadesc+1,x))
     }
-    console.log(VAN);
+    // console.log(VAN);
 
     var VANS1;
     var sumf=0;
@@ -406,7 +406,7 @@ export class PanelComponent implements OnInit{
       VANS1=sumf;
     }
     sumf=0;
-    console.log(VANS1);
+    // console.log(VANS1);
     this.VANS=VANS1.toFixed(2);
 
     //Calculo de TRI
@@ -432,10 +432,10 @@ export class PanelComponent implements OnInit{
     }
 
     this.TRI=interpol[val].toFixed(2);
-    console.log(TRIV);
-    console.log(interpol);
-    console.log(val);
-    console.log(this.TRI);
+    // console.log(TRIV);
+    // console.log(interpol);
+    // console.log(val);
+    // console.log(this.TRI);
     
     
     
@@ -481,7 +481,7 @@ export class PanelComponent implements OnInit{
     this.data.LCOE = this.LCOE
     this.data.TIR = this.TIR
 
-    console.log(this.Porcinver)
+    // console.log(this.Porcinver)
 
     if (this.k==0){
     this.k=this.k+1;
@@ -532,7 +532,7 @@ export class PanelComponent implements OnInit{
     this.radService.saveData(this.data)
       .subscribe(
         res => {
-          console.log(res);
+          // console.log(res);
           this.router.navigate(['/registro']);
         },
         err => console.error(err)
@@ -943,7 +943,7 @@ export class PanelComponent implements OnInit{
       };
   
       this.radService.recibirDatos(this.tabla);
-      console.log('Se accede al TMY '+this.tabla);
+      // console.log('Se accede al TMY '+this.tabla);
     };
 
     if(this.tabla) {
@@ -1030,7 +1030,7 @@ export class PanelComponent implements OnInit{
     this.Genera=[];
     this.Label=['24','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13','14', '15', '16', '17', '18', '19', '20', '21', '22','23'];
     this.label=[];
-    console.log(this.Vector2);
+    // console.log(this.Vector2);
     var contador=1;
 
     if(this.Mes==='Enero'){
@@ -1268,7 +1268,7 @@ export class PanelComponent implements OnInit{
     for (let i = 0; i < 12; i++) {
       this.VGB[i]=this.Consumo2;
     }
-    console.log(this.VGB);
+    // console.log(this.VGB);
     for (let i = 0; i < 12; i++) {
       this.VC[i]=this.VectorM[i];
     }
