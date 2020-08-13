@@ -13,6 +13,9 @@ import { MapaComponent } from './mapa/mapa.component';
 import { PanelComponent } from './panel/panel.component';
 import { RadService } from'./services/rad.service';
 import { CCComponent } from './cc/cc.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { CCComponent } from './cc/cc.component';
     Ng5SliderModule,
     ChartsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     RadService

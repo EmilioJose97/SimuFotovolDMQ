@@ -1,7 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, TemplateRef} from '@angular/core';
 import { AngularCsv } from 'angular7-csv/dist/Angular-csv'
 import { RadService } from '../services/rad.service';
 import { saveAs } from 'file-saver';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +12,8 @@ import { saveAs } from 'file-saver';
 })
 export class HeaderComponent implements OnInit {
   @Output() featureSelected = new EventEmitter<string>();
-  constructor(private radService: RadService) { }
-
+  constructor(private radService: RadService, private modalService: BsModalService) { }
+ 
   dtRegistro :any;
 
   csvOptions = {
@@ -47,6 +49,31 @@ export class HeaderComponent implements OnInit {
 
   onSelect(feature:string){
     this.featureSelected.emit(feature);
+  }
+
+  modalRef: BsModalRef;
+  
+ 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  pass;
+  errorme;
+  
+  Descargas(){
+    // console.log(this.pass);
+  
+    
+    if(this.pass==='FIMEPN2019'){
+      // console.log('Se descarga');
+      this.Descargar();
+      this.errorme='';
+      
+    }else{
+      // console.log('no se descarga');
+      this.errorme='Contraseña erronea'
+    }
   }
 
 }

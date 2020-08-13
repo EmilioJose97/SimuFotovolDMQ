@@ -28,10 +28,30 @@
             <ul class="nav navbar-nav">
                 <li><a href="#" (click)="onSelect('mapa')">Sistema fotovoltaico</a></li>
                 <li><a href="#" (click)="exportPdf()">Manual técnico</a></li>
-                <li><a href="#" (click)="Descargar()">Descargar registro</a></li>
+                <li><a href="#" (click)="openModal(template)">Descargar registro</a></li>
             </ul>
         </div>
         </div>
           
     </div>
 </nav>
+
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Descarga de Registro</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Ingrese contraseña:
+    <br>
+    <br>
+    <input type="password" [(ngModel)]="pass">
+    <br>
+    <p >{{errorme}}</p>
+    <hr>
+    <button class='btn btn-primary' (click)='Descargas()'>Descargar</button>
+  </div>
+</ng-template>
