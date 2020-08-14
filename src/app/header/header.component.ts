@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
       
     }else{
       // console.log('no se descarga');
-      this.errorme='Contraseña erronea'
+      this.errorme='Contraseña incorrecta'
     }
   }
 
