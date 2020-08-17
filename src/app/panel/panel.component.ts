@@ -114,11 +114,15 @@ export class PanelComponent implements OnInit{
     Lavadora: '',
     Secadora: '',
     Calefon: '',
+    PotDisp: 0,
+    PotReq:0,
     GenAnual: 0,
     ConsumoMensual: 0,
     Inversion: 0,
     LCOE: 0,
-    TIR: 0 
+    TIR: 0,
+    VAN:0,
+    TiempoRetornInv:0
   };
 
   constructor(private radService: RadService, private router: Router) { }
@@ -475,11 +479,15 @@ export class PanelComponent implements OnInit{
     this.data.Lavadora = this.P22
     this.data.Secadora = this.P32
     this.data.Calefon = this.P42
+    this.data.PotDisp = this.WpDisponibleC
+    this.data.PotReq = this.WpRequeridoC
     this.data.GenAnual = this.GenA
     this.data.ConsumoMensual = this.Consumo2
     this.data.Inversion = inv
     this.data.LCOE = this.LCOE
     this.data.TIR = this.TIR
+    this.data.VAN = this.VANS
+    this.data.TiempoRetornInv = this.TRI
 
     // console.log(this.Porcinver)
 
@@ -502,7 +510,7 @@ export class PanelComponent implements OnInit{
      this.ATTd=anaTIRtd;
 
      if(this.VANS<0){
-      this.AVAN='El VAN es negativo, lo cual indica una perdida monetaria del proyecto.' 
+      this.AVAN='El VAN es negativo, lo cual indica una pérdida monetaria del proyecto.' 
      };
      if(this.VANS>0){
       this.AVAN='El VAN es positivo, lo cual indica una ganancia monetaria del proyecto.' 
@@ -513,6 +521,16 @@ export class PanelComponent implements OnInit{
      if(this.TIR==(tasadesc*100)){
        this.ATTd='TIR es igual a la tasa de descuento, proyecto indiferente.'
      }
+     
+     var economicanalis
+     if(this.LCOE<9.5){
+      economicanalis='LCOE es menor a la tarifa eléctrica EEQ, por lo cual el costo de la energía generada por la instalación fotovoltaica es menor a costo de la Empresa Eléctrica Quito.' 
+     };
+     if(this.LCOE>9.5){
+       economicanalis='LCOE es mayor a la tarifa eléctrica EEQ, por lo cual el costo de la energía generada por la instalación fotovoltaica es mayor a costo de la Empresa Eléctrica Quito' 
+      };
+      this.ATTd=anaTIRtd;
+      this.Econom=economicanalis;
 
      //Recomendaciones
 
@@ -527,6 +545,7 @@ export class PanelComponent implements OnInit{
   ATTd;
   AVAN;
   Recom;
+  Econom;
   saveNewRegistro() {
     delete this.data.ID;
     this.radService.saveData(this.data)

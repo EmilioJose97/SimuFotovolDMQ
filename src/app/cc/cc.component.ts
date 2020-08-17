@@ -554,7 +554,7 @@ if(this.Calefon==="Ninguna"){
  
    // Grafico
     lineChartData: ChartDataSets[] = [
-     { data: this.Vectorf, label: 'Curva de Carga [Wh]' },
+     { data: this.Vectorf, label: 'Curva de carga [Wh]' },
    ];
  
    lineChartLabels: Label[] = this.Label;

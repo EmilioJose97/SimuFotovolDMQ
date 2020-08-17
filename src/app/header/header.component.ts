@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     title: 'Registrosimulación :',
     useBom: true,
     noDownload: false,
-    headers: ["ID", "Latitud", "Longitud", "Área", "Área útil","Adultos","Niños","Ancianos","Adultos trabajo","Ancianos trabajo","Cocina de inducción","Lavadora","Secadora eléctrica","Ducha","Generación anual","Consumo mensual","Inversión","LCOE","TIR"]
+    headers: ["ID", "Latitud", "Longitud", "Área", "Área útil","Adultos","Niños","Ancianos","Adultos trabajo","Ancianos trabajo","Cocina de inducción","Lavadora","Secadora eléctrica","Ducha","Potencia disponible", "Potencia requerida" ,"Generación anual","Consumo mensual","Inversión","LCOE","TIR", "VAN", "Tiempo de retorno de inversión"]
   };
 
   exportPdf() {

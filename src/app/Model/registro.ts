@@ -15,9 +15,13 @@ export interface Data {
     Lavadora?: string,
     Secadora?: string,
     Calefon?: string,
+    PotDisp?: number,
+    PotReq?: number,
     GenAnual?: number,
     ConsumoMensual?: number,
     Inversion?: number,
     LCOE?: number,
-    TIR?: number
+    TIR?: number,
+    VAN?: number,
+    TiempoRetornInv?: number,
 };

@@ -12,7 +12,7 @@
             <div class="col-sm-5">
                 <div class="padd">
                     <br>
-                    <h5 ALIGN="justify">El costo por Watt pico, es el precio de instalación de un panel solar capaz de generar un Watt de electricidad, considerando el costo de componentes y el de instalación del equipo.</h5>
+                    <h5 ALIGN="justify">El precio por Watt pico, considera el precio de todos los componentes del sistema fotovoltaico para generación distribuída, incluyendo el valor de la instalación, por unidad de potencia.</h5>
                     <br>
                 </div>     
             </div> 
@@ -34,14 +34,14 @@
             <div class="col-lg-5">
                 <div class="padd">
                     <br>
-                    <h5 ALIGN="justify">Al momento de realizar la construcción de la instalación fotovoltaica, puede escoger un porcentaje de inversión de su bolsillo, el resto será calculado como si fuera un prestamo a un banco.</h5>
+                    <h5 ALIGN="justify">Puede financiar la instalación del sistema fotovoltaico con capital propio, con un crédito bancario o una combinación de capital propio y crédito.</h5>
                     <br>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="padd">
                 <ol>
-                    <h5 class="NN">Señale el porcentaje de inversión propio que desee:</h5>
+                    <h5 class="NN">Señale el porcentaje de la inversión que será cubierta con su propio capital:</h5>
                     <br>
                     <ng5-slider [(value)]="Porcinver" [options]="options1"></ng5-slider>  
                 </ol>
@@ -83,7 +83,7 @@
                     <br>
                     <br>
                     <h5 class="bla"> Costo Wp: {{Costo}} [USD/W<sub>pico</sub>] </h5>
-                    <h5 class="bla"> Porcentaje de inversión propio: {{Porcinver}}%</h5>
+                    <h5 class="bla"> Porcentaje de capital propio: {{Porcinver}}%</h5>
                     
                 </div>
         
@@ -110,6 +110,7 @@
                     <h5 class="bla"> Consumo mensual: {{Consumo2}} [kWh/mes]</h5>
                     <h5 class="bla"> Generación anual: {{GenA}} [kWh/año]</h5>
                     <h5 class="bla"> Generación mensual promedio: {{GenM}} [kWh/mes]</h5>
+
                 </div>
             </div>
             <div class="col-lg-5">
@@ -144,6 +145,7 @@
                     <br>
                     <h5 class="bla"> Inversión total: {{Inversion}} [USD]</h5>
                     <h5 class="bla"> Costo nivelado de energía: {{LCOE}} [cent/kWh]</h5>
+                    <h5 class="bla"> Tarifa eléctrica EEQ: 9.5 [cent/kWh]</h5>
                     <h5 class="bla"> TIR: {{TIR}}%</h5>
                     <h5 class="bla"> VAN: {{VANS}} [USD]</h5>
                     <h5 class="bla"> Tasa de descuento: 13%</h5>
@@ -158,8 +160,9 @@
                     </div>
                     <h5 class="bla"> Inversión total: La inversión necesaria para la instalación del sistema fotovoltaico</h5>
                     <h5 class="bla"> Costo nivelado de energía: Es el costo real de la energía durante la vida útil de la instalación.</h5>
+                    <h5 class="bla"> Tarifa eléctrica EEQ: Es el costo de la energía que proporciona la Empresa Eléctrica Quito (EEQ).</h5>
                     <h5 class="bla"> TIR y Tasa de descuento: Indicativos financieros, proyecto rentable si TIR es mayor a tasa de descuento.</h5>
-                    <h5 class="bla"> VAN: Valor actual neto, es el valor monetario del proyecto en el año 0. Mustra ganancia o perdida.</h5>
+                    <h5 class="bla"> VAN: Valor actual neto, es el valor monetario del proyecto en el año 0. Muestra ganancia o pérdida.</h5>
                     <h5 class="bla"> Tiempo de recuperación de inversión: Tiempo en el cual se recupera la inversión del usuario de manera pasiva.</h5>
                 </div>
             </div>
@@ -177,9 +180,10 @@
                 <div class="padd">
                  
                     <div class="column">
-                       <h4 class="bla">Análisis</h4>
+                       <h4 class="bla">Conclusiones</h4>
                        <h5 class="bla">{{ATTd}}</h5>
                        <h5 class="bla">{{ AVAN}}</h5>
+                       <h5 class="bla">{{ Econom}}</h5>
                        <h4 class="bla">Recomendaciones</h4>
                        <h5 class="bla">{{ Recom}}</h5>
                  
@@ -258,7 +262,7 @@
 <hr>
 
 <div class="container">
-    <p> Grafico de barras</p>
+    <p> Gráfico de barras</p>
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
         <div style="display: block">
