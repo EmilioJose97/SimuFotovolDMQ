@@ -207,7 +207,7 @@ export class PanelComponent implements OnInit{
     this.WpDisponibleC = this.WpDisponible.toFixed();
    
     var Genv = Hs.map(function(x){ 
-      return Potencia*x*0.72;
+      return Potencia*x*0.73;
     });
    
     var Gena = 0;
