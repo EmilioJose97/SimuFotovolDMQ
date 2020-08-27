@@ -187,8 +187,8 @@ export class PanelComponent implements OnInit{
     for(var i=0; i< Hs.length; i++) {
     HsAnual += Hs[i]
     };
-    //Coeficiente PR = 72%
-    this.WpRequerido = this.Consumo2*1000*12/(HsAnual*0.72)
+    //Coeficiente PR = 73%
+    this.WpRequerido = this.Consumo2*1000*12/(HsAnual*0.73)
 
     //AreaUtil = 0.5*AreaDisponible
     //Capacidad = 120 W/m2 policristalino
