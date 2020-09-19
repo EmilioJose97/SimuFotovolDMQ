@@ -83,6 +83,7 @@ export class PanelComponent implements OnInit{
   PTotal:number;
   TRI;
   mWp;
+  
 
   //Variables para calculo de generacion mensual
   Gen1=[];
@@ -345,12 +346,12 @@ export class PanelComponent implements OnInit{
     var F2 = AhorroAnual;
     var F3 = AhorroAnual;
     var credito=(1-this.Porcinver/100)*inv;
-    var invC=inv-credito;
+    var invC=inv;
 
     //Calculo de cuota de prestamo (Metodo frances)
 
     var inversion=inv;
-    var tasainteres=0.12;
+    var tasainteres=0.0895;
     var plazoaños=3;
     var pagoprin=[];
     var pagoint=[];
@@ -385,9 +386,39 @@ export class PanelComponent implements OnInit{
       cuota[x]=0;
     }
 
+    //Calculo LCOE con prestamo
+    // console.log(cuota);
+    var tasadesc=0.13;
+    var VANCuota=[];
+    for(var x=1;x<4;x++){
+      VANCuota[x-1]=cuota[x-1]/(Math.pow(tasadesc+1,x))
+    }
+
+    var VANScuota1;
+    var sumf1=0;
+    for (var x=0; x<VANCuota.length; x++) {
+      sumf1=sumf1+VANCuota[x];
+      VANScuota1=sumf1;
+    }
+    sumf1=0;
+    // console.log(VANCuota);
+    // console.log(VANScuota1);
+    
+   
+    const inv2= inv-VANScuota1;
+    // console.log(inv2);
+    
+    const inv_anu1 = inv2 * this.i * (1+this.i)**(this.n) / (((1+this.i)**(this.n))-1);
+    // console.log(inv_anu1);
+    
+    this.LCOE = 100 * inv_anu1 / this.GenA;
+    // console.log(this.LCOE);
+    this.LCOE = this.LCOE.toFixed(2);
+    this.LCOE = this.LCOE;
+
     
     // console.log(cuota);
-    FF[0]=-inversion+credito;
+    FF[0]=-inversion;
     for(var x=1;x<21;x++){
       FF[x]=AhorroAnual+cuota[x-1];
     }
@@ -524,10 +555,13 @@ export class PanelComponent implements OnInit{
      
      var economicanalis
      if(this.LCOE<9.5){
-      economicanalis='LCOE es menor a la tarifa eléctrica EEQ, por lo cual el costo de la energía generada por la instalación fotovoltaica es menor a costo de la Empresa Eléctrica Quito.' 
+      economicanalis='LCOE es menor a la tarifa eléctrica EEQ, por lo cual el precio de la energía generada por la instalación fotovoltaica es menor a precio de la Empresa Eléctrica Quito.' 
      };
      if(this.LCOE>9.5){
-       economicanalis='LCOE es mayor a la tarifa eléctrica EEQ, por lo cual el costo de la energía generada por la instalación fotovoltaica es mayor a costo de la Empresa Eléctrica Quito' 
+       economicanalis='LCOE es mayor a la tarifa eléctrica EEQ, por lo cual el precio de la energía generada por la instalación fotovoltaica es mayor a precio de la Empresa Eléctrica Quito' 
+      };
+    if(this.LCOE==9.5){
+        economicanalis='LCOE es igual a la tarifa eléctrica EEQ, por lo cual el precio de la energía generada por la instalación fotovoltaica es igual a precio de la Empresa Eléctrica Quito' 
       };
       this.ATTd=anaTIRtd;
       this.Econom=economicanalis;
@@ -535,7 +569,7 @@ export class PanelComponent implements OnInit{
      //Recomendaciones
 
      if(this.TIR< (tasadesc*100) || this.VANS<0){
-       this.Recom='El proyecto no es viable, se recomienda disminuir el porcentaje de inversión propia o el valor de costo de Wp.'
+       this.Recom='El proyecto no es viable, se recomienda aumentar el porcentaje de inversión propia o disminuir el valor de precio de Wp.'
      }else{
        this.Recom='El proyecto es viable, no hay recomendaciones.'
      }
