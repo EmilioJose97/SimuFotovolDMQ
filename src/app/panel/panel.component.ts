@@ -193,7 +193,7 @@ export class PanelComponent implements OnInit{
 
     //AreaUtil = 0.5*AreaDisponible
     //Capacidad = 120 W/m2 policristalino
-    this.WpDisponible = this.Area*120*0.5;
+    this.WpDisponible = this.Area*150*0.5;
     
     if(this.WpRequerido>this.WpDisponible){
        var Potencia = this.WpDisponible;
