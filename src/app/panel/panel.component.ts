@@ -18,7 +18,7 @@ export class PanelComponent implements OnInit{
   Costo=1;
   
   options: Options = {
-    floor: 0.75,
+    floor: 0.7,
     ceil: 1.25,
     step: 0.05,
     translate: (Costo: number): string => {
@@ -129,7 +129,8 @@ export class PanelComponent implements OnInit{
   constructor(private radService: RadService, private router: Router) { }
 
   VANS;
-
+  tarifaEEQ;
+  tarifaEEQ1;
   //CALCULO FOTOVOLTAICO 
   calcular(){  
     this.PTotal=parseInt(this.Adultos2)+parseInt(this.Ancianos2)+parseInt(this.Ninos2);
@@ -336,8 +337,52 @@ export class PanelComponent implements OnInit{
     if (Gena<ConsumoA){
       this.balance = Gena;
     }
-    //Costo de la energia 0.095 [USD/kWh]
-    var AhorroAnual = this.balance*0.095
+    //Costo de la energia variable por consumo [USD/kWh]
+    if(this.Consumo2<=50){
+      this.tarifaEEQ=0.078;
+    }
+    if(this.Consumo2<=100 && this.Consumo2>=51){
+      this.tarifaEEQ=0.081;
+    }
+    if(this.Consumo2>=101 && this.Consumo2<=150){
+      this.tarifaEEQ=0.083;
+    }
+    if(this.Consumo2>=151 && this.Consumo2<=200){
+      this.tarifaEEQ=0.097;
+    }
+    if(this.Consumo2>=201 && this.Consumo2<=250){
+      this.tarifaEEQ=0.099;
+    }
+    if(this.Consumo2>=251 && this.Consumo2<=300){
+      this.tarifaEEQ=0.101;
+    }
+    if(this.Consumo2>=301 && this.Consumo2<=350){
+      this.tarifaEEQ=0.103;
+    }
+    if(this.Consumo2>=351 && this.Consumo2<=500){
+      this.tarifaEEQ=0.105;
+    }
+    if(this.Consumo2>=501 && this.Consumo2<=700){
+      this.tarifaEEQ=0.1285;
+    }
+    if(this.Consumo2>=701 && this.Consumo2<=1000){
+      this.tarifaEEQ=0.1450;
+    }
+    if(this.Consumo2>=1001 && this.Consumo2<=1500){
+      this.tarifaEEQ=0.1709;
+    }
+    if(this.Consumo2>=1501 && this.Consumo2<=2500){
+      this.tarifaEEQ=0.2752;
+    }
+    if(this.Consumo2>=2501 && this.Consumo2<=3500){
+      this.tarifaEEQ=0.4360;
+    }
+    if(this.Consumo2>3500){
+      this.tarifaEEQ=0.6812;
+    }
+    this.tarifaEEQ1=this.tarifaEEQ*100;
+    this.tarifaEEQ1=this.tarifaEEQ1.toFixed(2);
+    var AhorroAnual = this.balance*this.tarifaEEQ;
     this.Ahorro = AhorroAnual/12;
     this.AhorroMensual = this.Ahorro.toFixed(2);
 
@@ -384,6 +429,7 @@ export class PanelComponent implements OnInit{
 
     for(var x=plazoaños;x<20;x++){
       cuota[x]=0;
+      pagoint[x]=0;
     }
 
     //Calculo LCOE con prestamo
@@ -391,7 +437,7 @@ export class PanelComponent implements OnInit{
     var tasadesc=0.13;
     var VANCuota=[];
     for(var x=1;x<4;x++){
-      VANCuota[x-1]=cuota[x-1]/(Math.pow(tasadesc+1,x))
+      VANCuota[x-1]=pagoint[x-1]/(Math.pow(tasadesc+1,x))
     }
 
     var VANScuota1;
@@ -420,8 +466,10 @@ export class PanelComponent implements OnInit{
     // console.log(cuota);
     FF[0]=-inversion;
     for(var x=1;x<21;x++){
-      FF[x]=AhorroAnual+cuota[x-1];
+      FF[x]=AhorroAnual+pagoint[x-1];
     }
+  
+    
 
     // console.log(FF);
 
