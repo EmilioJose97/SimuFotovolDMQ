@@ -29,7 +29,7 @@ export class PanelComponent implements OnInit{
   Porcinver=60;
   
   options1: Options = {
-    floor: 60,
+    floor: 0,
     ceil: 100,
     step: 1,
     translate: (Porcinver: number): string => {
@@ -595,7 +595,7 @@ export class PanelComponent implements OnInit{
       this.AVAN='El VAN es positivo, lo cual indica una ganancia monetaria del proyecto.' 
      };
      if(this.VANS==0){
-       this.VANS= 'El VAN es cero por lo cual el proyecto es indiferente, no hay perdida ni ganancia.'
+       this.VANS= 'El VAN es cero por lo cual el proyecto es indiferente, no hay prdida ni ganancia.'
      }
      if(this.TIR==(tasadesc*100)){
        this.ATTd='TIR es igual a la tasa de descuento, proyecto indiferente.'
