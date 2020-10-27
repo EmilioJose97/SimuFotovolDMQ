@@ -83,6 +83,7 @@ export class PanelComponent implements OnInit{
   PTotal:number;
   TRI;
   mWp;
+  FP1;
   
 
   //Variables para calculo de generacion mensual
@@ -576,6 +577,11 @@ export class PanelComponent implements OnInit{
     }
     //Grafico barras mensual-anual
     this.GrapBarras();
+
+    // Cálculo de Factor de planta
+
+    var FP=(this.GenA*1000)/(Potencia*365*24);
+    this.FP1=FP.toFixed(3);
 
     //Análisis
    
